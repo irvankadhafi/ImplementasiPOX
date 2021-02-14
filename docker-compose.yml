@@ -1,0 +1,20 @@
+version: "3"
+services:
+  web:
+    container_name: flask-implementasi-pox
+    build: ./Flask
+    links:
+      - db
+    ports:
+      - "3000:5000"
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+  redis:
+    container_name: redis-implementasi-pox
+    image: "redis:alpine"
