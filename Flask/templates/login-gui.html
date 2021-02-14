@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Docker Based Mininet with SDN Controller</title>
+    <!-- BOOTSTRAP CORE STYLE -->
+    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+</head>
+
+<body>
+    <header>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </div>
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                        <h4 class="page-head-line" style="color:white">Docker Based Web Service</h4>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+
+    <!-- MENU SECTION END-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">Please
+                        Login or Register To Enter </h4>
+                    {% if error %}
+                    <p class=error><strong>Status:</strong> {{ error }}
+                        {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <form action="/signup" method="POST" class="col-md-6">
+                    <h4> Register </h4>
+                    <br />
+                    <label>Enter Email ID : </label>
+                    <input type="text" name="username" class="form-control" />
+                    <label>Enter Password : </label>
+                    <input type="password" name="password" class="form-control" />
+                    <hr />
+                    <button class="btn btn-warning"><span class="glyphicon glyphicon-user"></span>
+                        &nbsp;Register </button>&nbsp;
+                    <br /><br />
+                    <div class="alert alert-info">
+                        You can directly enter if you
+                        already have an acount or register if you don't. Enjoy our
+                        services
+                        <br />
+                    </div>
+                </form>
+                <form class="col-md-6" action="/login-gui" method="POST">
+                    <h4> Or Login</h4>
+                    <br />
+                    <label>Enter Email ID : </label>
+                    <input type="text" class="form-control" name="username" />
+                    <label>Enter Password : </label>
+                    <input type="password" class="form-control" name="password" />
+                    <hr />
+                    <button type="Submit" value="login" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> &nbsp;Log Me In </button>&nbsp;
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2015 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
