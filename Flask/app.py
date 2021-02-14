@@ -26,10 +26,13 @@ celery = Celery(app.name, broker=app.config['CELERY_BROKEN_URL'])
 celery.conf.update(app.config)
 
 
+@app.route('/test')
+def main():
+    return render_template('index.html')
+
 @app.route('/')
 def hello():
     return 'Hello Flask from alpine-linux! -IrvanKadhafi'
-
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
