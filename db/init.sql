@@ -1,30 +1,23 @@
 CREATE DATABASE implementasipox;
 use implementasipox;
-CREATE TABLE `linkofswitch` ( 
-   `source` INT(11),
-   `destination` INT(11),
-   `user_iduser` INT(11) NOT NULL,
-   `user_username` VARCHAR(64),
-    PRIMARY KEY `Primary key`(
 
-    )
-);
-CREATE TABLE `user` ( 
-   `iduser` INT(11) NOT NULL,
-   `username` VARCHAR(64),
-   `pwd` VARCHAR(64),
-    PRIMARY KEY `Primary key`(
-   `iduser`,
-   `username`
-    )
-);
-ALTER TABLE `linkofswitch` 
-  ADD CONSTRAINT `user-linkofswitch`
-  FOREIGN KEY ( 
-   `user_iduser`, 
-   `user_username`
-)   REFERENCES `user`( 
-   `iduser`, 
-   `username`
-) ;
+CREATE TABLE `linkofswitch` (
+  `source` int(11) NOT NULL,
+  `destination` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `pwd` varchar(64) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `linkofswitch`
+  ADD KEY `source` (`source`);
+ 
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`,`username`);
+
+ALTER TABLE `linkofswitch`
+  ADD CONSTRAINT `linkofswitch_ibfk_1` FOREIGN KEY (`source`) REFERENCES `user` (`id_user`);
+COMMIT;
