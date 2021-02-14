@@ -1,5 +1,17 @@
 version: "3"
 services:
+  web:
+    container_name: flask-implementasi-pox
+    build: ./Flask
+    links:
+      - db
+    ports:
+      - "3000:5000"
+
+  redis:
+    container_name: redis-implementasi-pox
+    image: "redis:alpine"
+
   db:
     container_name: mysql-implementasi-pox
     image: mysql:5.7
@@ -17,15 +29,3 @@ services:
       - "9000:80"
     links:
       - db
-
-  web:
-    container_name: flask-implementasi-pox
-    build: ./Flask
-    links:
-      - db
-    ports:
-      - "3000:5000"
-
-  redis:
-    container_name: redis-implementasi-pox
-    image: "redis:alpine"

@@ -2,3 +2,4 @@ flask
 mysql-connector
 celery
 pymysql
+flask-mysql
