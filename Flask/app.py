@@ -1,13 +1,20 @@
 import os
 from flask import Flask, session, redirect, url_for, escape, request, render_template, jsonify, Response
-import pymysql as MySQLdb
+import mysql.connector
 from hashlib import md5
 from base64 import b64encode
 from subprocess import Popen, call, PIPE
 from celery import Celery
 
 app = Flask(__name__)
-db = MySQLdb.connect(host="localhost", user="root", passwd="root", db="implementasipox")
+config = {
+        'user': 'root',
+        'password': 'root',
+        'host': 'db',
+        'port': '3306',
+        'database': 'implementasipox'
+    }
+db = mysql.connector.connect(**config)
 cur = db.cursor()
 p="a"
 #Celery configuration
