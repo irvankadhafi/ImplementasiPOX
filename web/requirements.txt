@@ -3,3 +3,4 @@ mysql-connector
 celery
 pymysql
 flask-mysql
+redis
