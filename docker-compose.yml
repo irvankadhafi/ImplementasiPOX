@@ -1,18 +1,22 @@
-version: "3"
+version: "3.7"
 services:
   web:
+    restart: "always"
     container_name: flask-implementasi-pox
-    build: ./Flask
-    links:
+    build: ./web
+    depends_on:
       - db
+      - redis
     ports:
       - "3000:5000"
 
   redis:
+    restart: "always"
     container_name: redis-implementasi-pox
     image: "redis:alpine"
 
   db:
+    restart: "always"
     container_name: mysql-implementasi-pox
     image: mysql:5.7
     ports:
@@ -23,9 +27,16 @@ services:
       - ./db:/docker-entrypoint-initdb.d/:ro
 
   phpmyadmin:
+    restart: "always"
     container_name: phpmyadmin-implementasi-pox
     image: phpmyadmin/phpmyadmin
     ports:
       - "9000:80"
-    links:
+    depends_on:
       - db
+
+  worker:
+      restart: "always"
+      build: ./celery
+      depends_on:
+        - redis
