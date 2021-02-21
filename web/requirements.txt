@@ -1,6 +1,8 @@
-flask
-mysql-connector
-celery
-pymysql
-flask-mysql
-redis
+flask==1.1.2
+mysql-connector==2.2.9
+celery==5.0.5
+pymysql==1.0.2
+flask-mysql==1.5.2
+redis==3.5.3
+mininet
+docker

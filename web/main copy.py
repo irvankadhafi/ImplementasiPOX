@@ -78,10 +78,6 @@ def addgui():
 def tesNet():
     return tesNets.delay()
 
-@celery.task
-def tesNets():
-    lordy.lordyNet()
-    
 @app.route('/addswitch')
 def lordyAddSwitches():
     conn = None
@@ -108,9 +104,11 @@ def lordyAddSwitches():
 #untuk restart jaringan
 @app.route('/tescelery')
 def tescelery():
-    celery.send_task('tasks.myNetworks')
-    # myNetworks.delay()
+    myNetworks.delay()
     return "Network Started"
+@celery.task
+def tesNets():
+    lordy.lordyNet()
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

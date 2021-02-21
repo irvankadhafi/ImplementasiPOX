@@ -36,7 +36,10 @@ services:
       - db
 
   worker:
+      container_name: worker-implementasi-pox
       restart: "always"
-      build: ./celery
+      build: ./worker
       depends_on:
         - redis
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
