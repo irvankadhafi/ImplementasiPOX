@@ -14,9 +14,10 @@ net = 0
 def myNetwork() :
     global net
     net = Containernet( topo=None, build=False,ipBase='10.0.0.0/8')
-    info( '*** Adding controller\n' )
+    print( '*** Adding controller\n' )
     print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-    c0=net.addController(name='c0', controller=RemoteController, ip='0.0.0.0', protocol='tcp', port=6633)
+    #POX Controller
+    c0=net.addController(name='c0', controller=RemoteController, ip='127.0.0.1', protocol='tcp', port=6633)
     info( '*** Add switches\n')
     s5 = net.addSwitch('s5', cls=OVSKernelSwitch)
     s4 = net.addSwitch('s4', cls=OVSKernelSwitch)
@@ -58,7 +59,7 @@ def myNetwork() :
     info("*** starting net")
     net.start()
     info("*** Kodingan Tambahan Lordy\n")
-    tambahDocker('11','10.0.0.11/8','ubuntu:trusty','s3')
+    # tambahDocker('11','10.0.0.11/8','ubuntu:trusty','s3')
     print('sudah ditambah')
     #CLI(net)
     #net.stop()

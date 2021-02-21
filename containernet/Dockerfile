@@ -40,6 +40,8 @@ ENV CELERY_RESULT_BACKEND redis://redis:6379/0
 RUN mkdir -p /usr/src/celery
 WORKDIR /usr/src/celery
 COPY requirements.txt /usr/src/celery
+#dibuat manual lagi
+#ovs-ctl show
 RUN sudo /usr/share/openvswitch/scripts/ovs-ctl start
 RUN pip3 install -r requirements.txt
 COPY . /usr/src/celery

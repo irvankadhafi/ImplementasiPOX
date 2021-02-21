@@ -42,6 +42,7 @@ def fetchTable():
     conn = None
     cursor = None
     try:
+        # celery.send_task('tasks.tambahdockers', args=[11,"10.0.0.2/8", "mysql:5.7","s"+1], kwargs={})
         username_form = session['username']
         conn = mysql.connect()
         cursor = conn.cursor()
@@ -75,7 +76,12 @@ def addgui():
 
 @app.route('/tesnet')
 def tesNet():
-    return celery.send_task('tasks.tesNets')
+    task = celery.send_task('tasks.tesNets')
+    res = celery.AsyncResult(task.id)
+    if res.state == states.PENDING:
+        return res.state
+    else:
+        return str(res.result)
 
 @app.route('/addswitch')
 def lordyAddSwitches():
