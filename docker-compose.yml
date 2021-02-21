@@ -40,9 +40,9 @@ services:
       build: ./containernet
       depends_on:
         - redis
-      tty: true
-      privileged: true
-      network_mode: "host"
+      # tty: true
+      # privileged: true
+      # network_mode: "host"
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         - /lib/modules:/lib/modules
