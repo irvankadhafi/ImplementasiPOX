@@ -76,12 +76,8 @@ def addgui():
 
 @app.route('/tesnet')
 def tesNet():
-    return tesNets.delay()
+    return celery.send_task('tasks.tesNets')
 
-@celery.task
-def tesNets():
-    lordy.lordyNet()
-    
 @app.route('/addswitch')
 def lordyAddSwitches():
     conn = None
@@ -111,6 +107,11 @@ def tescelery():
     celery.send_task('tasks.myNetworks')
     # myNetworks.delay()
     return "Network Started"
+
+@app.route('/tambahdocker')
+def tambahdocker():
+    celery.send_task('tasks.tambahdockers')
+    return "docker berhasil ditambah"
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
