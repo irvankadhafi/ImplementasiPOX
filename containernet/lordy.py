@@ -107,4 +107,4 @@ def lordyDelLink(source,dest) :
 
 if __name__ == '__main__' :
     setLogLevel( 'info' )
-    #myNetwork()
+    myNetwork()

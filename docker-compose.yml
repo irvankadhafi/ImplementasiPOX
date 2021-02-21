@@ -1,17 +1,5 @@
 version: "3.7"
 services:
-  worker:
-      container_name: worker-implementasi-pox
-      build: ./containernet
-      depends_on:
-        - redis
-      tty: true
-      privileged: true
-      network_mode: "host"
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
-        - /lib/modules:/lib/modules
-
   web:
     restart: "always"
     container_name: flask-implementasi-pox
@@ -46,3 +34,15 @@ services:
       - "9000:80"
     depends_on:
       - db
+
+  worker:
+      container_name: worker-implementasi-pox
+      build: ./containernet
+      depends_on:
+        - redis
+      tty: true
+      privileged: true
+      network_mode: "host"
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /lib/modules:/lib/modules

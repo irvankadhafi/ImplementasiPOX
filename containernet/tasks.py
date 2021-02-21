@@ -13,6 +13,7 @@ celery = Celery('tasks', broker=CELERY_BROKER_URL, backend=CELERY_RESULT_BACKEND
 def add(x: int, y: int) -> int:
     time.sleep(5)
     return x + y
+    
 @celery.task(name='tasks.myNetworks')
 def myNetworks():
     lordy.myNetwork()
