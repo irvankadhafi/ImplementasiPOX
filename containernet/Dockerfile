@@ -33,9 +33,7 @@ RUN pip3 install "more-itertools<=5.0.0"
 # tell containernet that it runs in a container
 ENV CONTAINERNET_NESTED 1
 # Important: This entrypoint is required to start the OVS service
-RUN ln /usr/bin/ovs-testcontroller /usr/bin/controller
 RUN service openvswitch-switch start
-RUN ovs-vsctl set-manager ptcp:6640
 ENV CELERY_BROKER_URL redis://redis:6379/0
 ENV CELERY_RESULT_BACKEND redis://redis:6379/0
 
